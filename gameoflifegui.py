@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 
     CONWAY'S GAME OF LIFE
@@ -32,12 +33,12 @@
 """
 
 
-import pygame, random, time, random
+import pygame, random, time, random, os
 from pygame.locals import *
 from boxes import Box
 
-MAX_X = 80
-MAX_Y = 40
+MAX_X = 32
+MAX_Y = 24
 SIZE = 10
 DEBUG = False
 
@@ -52,6 +53,19 @@ boxes = [''] * MAX_X
     
 for i in range(MAX_X):
     boxes[i] = [''] * MAX_Y
+
+from evdev import InputDevice, list_devices
+devices = map(InputDevice, list_devices())
+eventX=""
+for dev in devices:
+    if dev.name == "ADS7846 Touchscreen":
+        eventX = dev.fn
+#print eventX
+
+os.environ["SDL_FBDEV"] = "/dev/fb1"
+os.environ["SDL_MOUSEDRV"] = "TSLIB"
+os.environ["SDL_MOUSEDEV"] = eventX
+
 
 pygame.init()
 pygame.display.set_caption('Conway\'s Game of Life by jparmstrong.com')
