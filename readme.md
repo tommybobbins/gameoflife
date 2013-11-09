@@ -11,3 +11,7 @@ J.P.
 
 
 ![screenshot](http://www.pygame.org/shots/852.jpg)
+
+
+Modified tng 9-Nov-2013 to run on HY-28
+http://www.raspberrypi.org/phpBB3/viewtopic.php?f=93&t=53144
